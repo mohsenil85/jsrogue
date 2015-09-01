@@ -162,14 +162,33 @@ Game.Screen.playScreen = {
         }
         if (inputType === 'keydown') {
             // Movement
-            if (inputData.keyCode === ROT.VK_LEFT) {
+            if (inputData.keyCode === ROT.VK_ESCAPE) {
+                Game.sendMessage(this._player, "You yell" );
+                Term.toggleTerm(this._player);
+            } else if (inputData.keyCode === ROT.VK_Q) {
+                //debugger;
+                require('nw.gui').App.quit();
+
+                //ortho
+            } else if (inputData.keyCode === ROT.VK_H) {
                 this.move(-1, 0, 0);
-            } else if (inputData.keyCode === ROT.VK_RIGHT) {
+            } else if (inputData.keyCode === ROT.VK_L) {
                 this.move(1, 0, 0);
-            } else if (inputData.keyCode === ROT.VK_UP) {
+            } else if (inputData.keyCode === ROT.VK_K) {
                 this.move(0, -1, 0);
-            } else if (inputData.keyCode === ROT.VK_DOWN) {
+            } else if (inputData.keyCode === ROT.VK_J) {
                 this.move(0, 1, 0);
+
+                //diag
+            } else if (inputData.keyCode === ROT.VK_U) {
+                this.move(1, -1, 0);
+            } else if (inputData.keyCode === ROT.VK_Y) {
+                this.move(-1, -1, 0);
+            } else if (inputData.keyCode === ROT.VK_N) {
+                this.move(1, 1, 0);
+            } else if (inputData.keyCode === ROT.VK_B) {
+                this.move(-1, 1, 0);
+
             } else if (inputData.keyCode === ROT.VK_I) {
                 // Show the inventory screen
                 this.showItemsSubScreen(Game.Screen.inventoryScreen, this._player.getItems(),
